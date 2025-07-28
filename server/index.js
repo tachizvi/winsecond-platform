@@ -5,33 +5,10 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Routes
-const productRoutes = require('./routes/product.routes');
-const authRoutes = require('./routes/auth.routes');
-
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
-
-// Auth Connection
-app.use('/api/auth', authRoutes);
-console.log("🛣️ Auth routes loaded at /api/auth");
-
-// Product Connection
-app.use('/api/products', productRoutes);
-console.log("🛣️ Product routes loaded at /api/products");
-
-// Raffle Connection
-const raffleRoutes = require('./routes/raffle.routes');
-app.use('/api/raffles', raffleRoutes);
-console.log("🛣️ Raffle routes loaded at /api/raffles");
-
-// Ticket Connection
-const ticketRoutes = require('./routes/ticket.routes');
-app.use('/api/tickets', ticketRoutes);
-console.log("🛣️ Ticket routes loaded at /api/tickets");
-
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
