@@ -13,10 +13,19 @@ const authRoutes = require('./routes/auth.routes');
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
+// Auth Connection
 app.use('/api/auth', authRoutes);
 console.log("🛣️ Auth routes loaded at /api/auth");
+
+// Product Connection
 app.use('/api/products', productRoutes);
 console.log("🛣️ Product routes loaded at /api/products");
+
+// Raffle Connection
+const raffleRoutes = require('./routes/raffle.routes');
+app.use('/api/raffles', raffleRoutes);
+
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
