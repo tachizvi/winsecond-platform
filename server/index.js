@@ -5,13 +5,18 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+// Routes
+const productRoutes = require('./routes/product.routes');
 const authRoutes = require('./routes/auth.routes');
+
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 console.log("🛣️ Auth routes loaded at /api/auth");
+app.use('/api/products', productRoutes);
+console.log("🛣️ Product routes loaded at /api/products");
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
