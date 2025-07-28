@@ -25,6 +25,13 @@ console.log("🛣️ Product routes loaded at /api/products");
 // Raffle Connection
 const raffleRoutes = require('./routes/raffle.routes');
 app.use('/api/raffles', raffleRoutes);
+console.log("🛣️ Raffle routes loaded at /api/raffles");
+
+// Ticket Connection
+const ticketRoutes = require('./routes/ticket.routes');
+app.use('/api/tickets', ticketRoutes);
+console.log("🛣️ Ticket routes loaded at /api/tickets");
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI, {
