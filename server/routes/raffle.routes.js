@@ -6,5 +6,6 @@ const {authMiddleware} = require('../middleware/auth.middleware');
 router.post('/', authMiddleware, raffleController.createRaffle);
 router.get('/', raffleController.getAllRaffles);
 router.get('/:id', raffleController.getRaffleById);
+router.post('/:id/resolve', authMiddleware, raffleController.resolveRaffle);
 
 module.exports = router;
